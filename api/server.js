@@ -15,7 +15,7 @@ var port=process.env.PORT || 3000
 
 //Connect to db
 
-mongoose.connect('mongodb://localhost:27017//codealong')
+mongoose.connect('mongodb://localhost:27017/codealong')
 
 //API router
 
@@ -23,7 +23,7 @@ var router =express.Router()
 
 //Router will all be prefix with /api
 
-app.use('./api',router)
+app.use('/api',router)
 
 //Test router
 

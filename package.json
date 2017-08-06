@@ -1,0 +1,23 @@
+{
+  "name": "APIs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alikahwaji/APIs.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alikahwaji/APIs/issues"
+  },
+  "homepage": "https://github.com/alikahwaji/APIs#readme",
+  "dependencies": {
+    "node": "^8.2.1"
+  }
+}

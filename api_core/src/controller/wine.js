@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 import {Router} from 'express'
-import Coffee from '../model/coffee'
+import Wine from '../model/wine'
 
 export default ({config ,db}) => {
     let api = Router()
@@ -8,66 +8,62 @@ export default ({config ,db}) => {
 
     // CRUD
 
-
-
-
-
     //coffee/add
     api.post('/add' ,(req,res) => {
-        let newCoffee = new Coffee()
-        newCoffee.name = req.body.name
+        let newWine = new Wine()
+        newWine.name = req.body.name
 
 
-        newCoffee.save(err=> {
+        newWine.save(err=> {
             if(err) {
                 res.send(err)
             }
-            res.json({message: 'Coffee Upload successfully'})
+            res.json({message: 'Wine Upload successfully'})
         })
     })
 
-    // /coffee -READ
+    // Wine-READ
     api.get('/', (req,res)  => {
-        Coffee.find({}, (err, coffees) => {
+        Wine.find({}, (err, wines) => {
             if (err) {
                 res.send(err)
             }
-            res.json(coffees)
+            res.json(wines)
         }) 
     })
 
     api.get('/:id', (req,res) => {
-        Coffee.findById(req.params.id, (err,coffee) =>{
+        Wine.findById(req.params.id, (err,wine) =>{
             if(err) {
                 res.send(err)
             }
-            res.json(coffee)
+            res.json(wine)
         })
     })
 
     // v1/coffee/:id - update
     api.put('/:id', (req,res) => {
-        Coffee.findById(req.params.id, (err,coffee) => {
+        Wine.findById(req.params.id, (err,Wine) => {
             if(err) {
                 res.send(err)
             }
-            coffee.name =req.body.name
-            coffee.save(err =>{
+            wine.name =req.body.name
+            wine.save(err =>{
                 if(err){
                     res.send(err)
                 }
-                res.json({message:'Coffee information update'})
+                res.json({message:'wine information update'})
             })
         })
     })
     api.delete('/:id', (req,res)=> {
-        Coffee.remove({
+        Wine.remove({
             _id: req.params.id
-        }, (err,coffee) => {
+        }, (err,wine) => {
             if(err) {
                 res.send(err)
             } 
-            res.json({message: 'Coffee Removed'})
+            res.json({message: 'Wine Removed'})
         
         })
     })

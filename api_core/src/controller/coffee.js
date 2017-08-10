@@ -44,5 +44,32 @@ export default ({config ,db}) => {
             res.json(coffee)
         })
     })
+
+    // v1/coffee/:id - update
+    api.put('/:id', (req,res) => {
+        Coffee.findById(req.params.id, (err,coffee) => {
+            if(err) {
+                res.send(err)
+            }
+            coffee.name =req.body.name
+            coffee.save(err =>{
+                if(err){
+                    res.send(err)
+                }
+                res.json({message:'Coffee information update'})
+            })
+        })
+    })
+    api.delete('/:id', (req,res)=> {
+        Coffee.remove({
+            _id: req.params.id
+        }, (err,coffee) => {
+            if(err) {
+                res.send(err)
+            } 
+            res.json({message: 'Coffee Removed'})
+        
+        })
+    })
     return api
 }

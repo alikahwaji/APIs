@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 import {Router} from 'express'
-import Coffee from '../model/coffee'
+import CoffeeShop from '../model/coffeeShop'
 
 export default ({config ,db}) => {
     let api = Router()
@@ -14,60 +14,60 @@ export default ({config ,db}) => {
 
     //coffee/add
     api.post('/add' ,(req,res) => {
-        let newCoffee = new Coffee()
-        newCoffee.name = req.body.name
+        let newCoffeeShop = new CoffeeShop()
+        newCoffeeShop.name = req.body.name
 
 
-        newCoffee.save(err=> {
+        newcoffeeShop.save(err=> {
             if(err) {
                 res.send(err)
             }
-            res.json({message: 'Coffee Upload successfully'})
+            res.json({message: 'Coffee Shop Upload successfully'})
         })
     })
 
-    // /coffee -READ
+    // /coffeeShop -READ
     api.get('/', (req,res)  => {
-        Coffee.find({}, (err, coffees) => {
+        coffeeShop.find({}, (err, coffeeShops) => {
             if (err) {
                 res.send(err)
             }
-            res.json(coffees)
+            res.json(coffeeShops)
         }) 
     })
 
     api.get('/:id', (req,res) => {
-        Coffee.findById(req.params.id, (err,coffee) =>{
+        coffeeShop.findById(req.params.id, (err,coffeeShop) =>{
             if(err) {
                 res.send(err)
             }
-            res.json(coffee)
+            res.json(coffeeShop)
         })
     })
 
-    // v1/coffee/:id - update
+    // v1/coffeeShop/:id - update
     api.put('/:id', (req,res) => {
-        Coffee.findById(req.params.id, (err,coffee) => {
+        coffeeShop.findById(req.params.id, (err,coffeeShop) => {
             if(err) {
                 res.send(err)
             }
-            coffee.name =req.body.name
-            coffee.save(err =>{
+            coffeeShop.name =req.body.name
+            coffeeShop.save(err =>{
                 if(err){
                     res.send(err)
                 }
-                res.json({message:'Coffee information update'})
+                res.json({message:'Coffee Shop information update'})
             })
         })
     })
     api.delete('/:id', (req,res)=> {
-        Coffee.remove({
+        coffeeShop.remove({
             _id: req.params.id
-        }, (err,coffee) => {
+        }, (err,coffeeShop) => {
             if(err) {
                 res.send(err)
             } 
-            res.json({message: 'Coffee Removed'})
+            res.json({message: 'Coffee Shop Removed'})
         
         })
     })

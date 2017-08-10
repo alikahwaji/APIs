@@ -2,7 +2,7 @@ import express from 'express'
 import config from '../config'
 import middleware from '../middleware'
 import initializeDb from '../db'
-import coffee from '../controller/coffee'
+import coffeeShop from '../controller/coffeeShop'
 
 let router = express()
 
@@ -14,7 +14,7 @@ initializeDb (db =>{
     router.use(middleware({config,db}))
 
     //api routes v1 
-    router.use('/coffee',coffee({config, db}))
+    router.use('/coffeeShop',coffeeShop({config, db}))
 })
 
 export default router

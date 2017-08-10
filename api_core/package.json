@@ -1,7 +1,7 @@
 {
   "name": "api_core",
   "version": "0.0.1",
-  "description": "Bean2Go API ",
+  "description": "coffeeShop API ",
   "main": "dist",
   "scripts": {
     "dev": "NODE_ENV=development nodemon -2 src --exec \"babel-node src --presets es2015,stage-0\"",

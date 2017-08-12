@@ -20,24 +20,28 @@ var _db = require('../db');
 
 var _db2 = _interopRequireDefault(_db);
 
-var _coffee = require('../controller/coffee');
+var _wine = require('../controller/wine');
 
-var _coffee2 = _interopRequireDefault(_coffee);
+var _wine2 = _interopRequireDefault(_wine);
+
+var _bodyParser = require('body-parser');
+
+var _bodyParser2 = _interopRequireDefault(_bodyParser);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var router = (0, _express2.default)();
-
+var app = (0, _express2.default)();
+app.use(_bodyParser2.default.json());
 //connect to db
 
 (0, _db2.default)(function (db) {
 
     // internal middleware
-    router.use((0, _middleware2.default)({ config: _config2.default, db: db }));
+    app.use((0, _middleware2.default)({ config: _config2.default, db: db }));
 
     //api routes v1 
-    router.use('/coffee', (0, _coffee2.default)({ config: _config2.default, db: db }));
+    app.use('/wine', (0, _wine2.default)({ config: _config2.default, db: db }));
 });
 
-exports.default = router;
+exports.default = app;
 //# sourceMappingURL=index.js.map

@@ -12,6 +12,9 @@ export default ({config ,db}) => {
     api.post('/add' ,(req,res) => {
         let newWine = new Wine()
         newWine.name = req.body.name
+        newWine.type = req.body.type
+        newWine.year = req.body.year
+        newWine.winery = req.body.winery
 
 
         newWine.save(err=> {
@@ -41,7 +44,7 @@ export default ({config ,db}) => {
         })
     })
 
-    // v1/coffee/:id - update
+    // v1/wine/:id - update
     api.put('/:id', (req,res) => {
         Wine.findById(req.params.id, (err,Wine) => {
             if(err) {
